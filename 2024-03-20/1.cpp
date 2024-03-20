@@ -77,5 +77,14 @@ int main(void)
     user_1.set_password("12345678");
 
     cout << "Name: " << user_1.get_name() << "\nAge: " << user_1.get_age() << "\nEmail: " << user_1.get_email() << "\nPassword: " << user_1.get_password() << endl;
+    
+    User user_2;
+    user_2.set_name("Anastasya");
+    user_2.set_age(48);
+    user_2.set_email("Anastasya@gmail.com");
+    user_2.set_password("87654321");
+
+    cout << "Name: " << user_2.get_name() << "\nAge: " << user_2.get_age() << "\nEmail: " << user_2.get_email() << "\nPassword: " << user_2.get_password() << endl;
+    
     return 0;
 }
