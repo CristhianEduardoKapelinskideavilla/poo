@@ -16,6 +16,23 @@ Veiculo::Veiculo()
     float comprimento = 0;
     float peso = 0;
 }
+
+Veiculo::Veiculo(std::string cargcapac, std::string anofab, std::string chas, std::string modl, std::string loc, std::string tra, std::string esp, std::string ca, float larg, float alt, float comp, float pes)
+{
+    this -> capacidade_carga = cargcapac;
+    this -> ano_fabricacao = anofab;
+    this -> chassi = chas;
+    this -> modelo = modl;
+    this -> localizacao = loc;
+    this -> tracao = tra;
+    this -> especie = esp;
+    this -> categoria = ca;
+    this -> largura = larg;
+    this -> altura = alt;
+    this -> comprimento = comp;
+    this -> peso = pes;
+}
+
 void Veiculo::setCapacidade_carga(std::string cargcapac)
 {
     this -> capacidade_carga = cargcapac;

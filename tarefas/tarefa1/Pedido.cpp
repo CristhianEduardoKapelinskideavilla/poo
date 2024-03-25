@@ -10,6 +10,17 @@ Pedido::Pedido()
     this -> volume_carga = 0.0;
 }
 
+Pedido::Pedido(Cliente clnt, Veiculo vcl, std::string tptrsprt, std::string lclclt, std::string lclentrg, float psocarg, float volcarg)
+{
+    this -> cliente = clnt;
+    this -> veiculo = vcl;
+    this -> tipo_transporte = tptrsprt;
+    this -> local_coleta = lclclt;
+    this -> local_entrega = lclentrg;
+    this -> peso_carga = psocarg;
+    this -> volume_carga = volcarg;
+}
+
 void Pedido::setCliente(Cliente clnt)
 {
     this -> cliente = clnt;

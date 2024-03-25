@@ -1,6 +1,16 @@
 #include "Cliente.h"
 #include <iostream>
 
+Cliente::Cliente(std::string nom, std::string eml, std::string endrc, std::string fone, std::string cf, int idd)
+{
+    this -> nome = nom;
+    this -> email = eml;
+    this -> endereco = endrc;
+    this -> telefone = fone;
+    this -> cpf = cf;
+    this -> idade = idd;
+}
+
 Cliente::Cliente()
 {
     this -> nome = "";
@@ -10,6 +20,7 @@ Cliente::Cliente()
     this -> cpf = "";
     this -> idade = 0;
 }
+
 void Cliente::setNome(std::string nom)
 {
     this -> nome = nom;

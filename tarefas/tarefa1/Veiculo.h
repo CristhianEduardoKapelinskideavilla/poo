@@ -22,6 +22,7 @@ private:
 
 public:
     Veiculo();
+    Veiculo(std::string cargcapac, std::string anofab, std::string chas, std::string modl, std::string loc, std::string tra, std::string esp, std::string ca, float larg, float alt, float comp, float pes);
     void setCapacidade_carga(std::string cargcapac);
     void setAno_fabricacao(std::string anofab);
     void setChassi(std::string chas);

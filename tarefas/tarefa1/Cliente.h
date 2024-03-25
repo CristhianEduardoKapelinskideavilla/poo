@@ -16,6 +16,7 @@ private:
 
 public:
     Cliente();
+    Cliente(std::string nom, std::string eml, std::string endrc, std::string fone, std::string cf, int idd);
     void setNome(std::string nom);
     void setEmail(std::string eml);
     void setEndereco(std::string endrc);
