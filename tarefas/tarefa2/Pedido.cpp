@@ -25,6 +25,16 @@ Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, st
     this -> volume_carga = volume_carga;
 }
 
+void Pedido::print()
+{
+    std::cout << "\nCliente: " << this -> getCliente().getNome() << "\n"
+                << "Veiculo: " << this -> getVeiculo().getModelo() << "\n"
+                << "Tipo de Transporte: " << this -> getTipo_transporte() << "\n"
+                << "Local de Coleta: " << this -> getLocal_coleta() << "\n"
+                << "Local de Entrega: " << this -> getLocal_entrega() << "\n"
+                << "Peso da Carga: " << this -> getPeso_carga() << "kg\n"
+                << "Volume da Carga: " << this -> getVolume_carga() << "cm³\n";
+}
 int Pedido::setCliente(Cliente cliente)
 {
     this -> cliente = cliente;

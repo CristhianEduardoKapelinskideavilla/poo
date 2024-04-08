@@ -3,6 +3,7 @@
 
 Veiculo::Veiculo()
 {
+    this -> id_veiculo = ++Veiculo::id;
     this -> capacidade_carga = "";
     this -> ano_fabricacao = "";
     this -> chassi = "";
@@ -11,14 +12,16 @@ Veiculo::Veiculo()
     this -> tracao = "";
     this -> especie = "";
     this -> categoria = "";
-    float largura = 0;
-    float altura = 0;
-    float comprimento = 0;
-    float peso = 0;
+    this -> placa = "";
+    this -> largura = 0;
+    this -> altura = 0;
+    this -> comprimento = 0;
+    this -> peso = 0;
 }
 
-Veiculo::Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, float largura, float altura, float comprimento, float pes)
+Veiculo::Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std::string placa, float largura, float altura, float comprimento, float peso)
 {
+    this -> id_veiculo = Veiculo::id;
     this -> capacidade_carga = capacidade_carga;
     this -> ano_fabricacao = ano_fabricacao;
     this -> chassi = chassi;
@@ -27,11 +30,32 @@ Veiculo::Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::
     this -> tracao = tracao;
     this -> especie = especie;
     this -> categoria = categoria;
+    this -> placa = placa;
     this -> largura = largura;
     this -> altura = altura;
     this -> comprimento = comprimento;
-    this -> peso = pes;
+    this -> peso = peso;
 }
+
+void Veiculo::print()
+{
+    std::cout << "Modelo: "<< this -> getModelo() << "\n"
+                << "Capacidade de Carga: " << this -> getCapacidade_carga() << "\n"
+                << "Id: " << this -> getId() << "\n"
+                << "Ano de Fabricação: " << this -> getAno_fabricacao() << "\n"
+                << "Chassi: " << this -> getChassi() << "\n"
+                << "Localização: " << this -> getLocalizacao() << "\n"
+                << "Tracao: " << this -> getTracao() << "\n"
+                << "Especie: " << this -> getEspecie() << "\n"
+                << "Categoria: " << this -> getCategoria() << "\n"
+                << "Placa: " << this -> getPlaca() << "\n"
+                << "Largura: " << this -> getLargura() << "cm\n"
+                << "Altura: " << this -> getAltura() << "cm\n"
+                << "Comprimento: " << this -> getComprimento() << "cm\n"
+                << "Peso: " << this -> getPeso() << "kg\n"<< std::endl;
+}
+
+int Veiculo::id = 0;
 
 int Veiculo::setCapacidade_carga(std::string capacidade_carga)
 {
@@ -52,7 +76,6 @@ int Veiculo::setModelo(std::string modelo)
 {
     this -> modelo = modelo;
     return 1;
-    return 0;
 }
 int Veiculo::setLocalizacao(std::string localizacao)
 {
@@ -72,6 +95,11 @@ int Veiculo::setEspecie(std::string especie)
 int Veiculo::setCategoria(std::string categoria)
 {
     this -> categoria = categoria;
+    return 1;
+}
+int Veiculo::setPlaca(std::string placa)
+{
+    this -> placa = placa;
     return 1;
 }
 int Veiculo::setLargura(float largura)
@@ -116,7 +144,10 @@ int Veiculo::setPeso(float peso)
 }
 
 
-
+int Veiculo::getId()
+{
+    return this -> id_veiculo;
+}
 std::string Veiculo::getCapacidade_carga()
 {
     return this -> capacidade_carga;
@@ -148,6 +179,10 @@ std::string Veiculo::getEspecie()
 std::string Veiculo::getCategoria()
 {
     return this -> categoria;
+}
+std::string Veiculo::getPlaca()
+{
+    return this -> placa;
 }
 float Veiculo::getLargura()
 {
