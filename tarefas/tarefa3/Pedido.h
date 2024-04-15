@@ -16,10 +16,12 @@ private:
     std::string local_entrega;
     float peso_carga;
     float volume_carga;
+    double latitude;
+    double longitude; 
 
 public:
     Pedido();
-    Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga);
+    Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga, double latitude, double longitude);
     void print();
     int setCliente(Cliente cliente);
     int setVeiculo(Veiculo veiculo);
@@ -28,7 +30,9 @@ public:
     int setLocal_entrega(std::string local_entrega);
     int setPeso_carga(float peso_carga);
     int setVolume_carga(float volume_carga);
-
+    int setLatitude(double latitude);
+    int setLongitude(double longitude);
+    
     Cliente getCliente();
     Veiculo getVeiculo();
     std::string getTipo_transporte();
@@ -36,6 +40,8 @@ public:
     std::string getLocal_entrega();
     float getPeso_carga();
     float getVolume_carga();
+    double getLatitude();
+    double getLongitude();
     bool operator==(Pedido& other) const;
     friend std::ostream& operator<<(std::ostream& os, const Pedido& pedido);
 };

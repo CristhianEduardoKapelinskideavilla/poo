@@ -12,9 +12,11 @@ Pedido::Pedido()
     this -> local_entrega = "";
     this -> peso_carga = 0.0;
     this -> volume_carga = 0.0;
+    this -> longitude = 0;
+    this -> latitude = 0;
 }
 
-Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga)
+Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga, double latitude, double longitude)
 {
     this -> cliente = cliente;
     this -> veiculo = veiculo;
@@ -23,18 +25,10 @@ Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, st
     this -> local_entrega = local_entrega;
     this -> peso_carga = peso_carga;
     this -> volume_carga = volume_carga;
+    this -> longitude = longitude;
+    this -> latitude = latitude;
 }
 
-void Pedido::print()
-{
-    std::cout << "\nCliente: " << this -> getCliente().getNome() << "\n"
-                << "Veiculo: " << this -> getVeiculo().getModelo() << "\n"
-                << "Tipo de Transporte: " << this -> getTipo_transporte() << "\n"
-                << "Local de Coleta: " << this -> getLocal_coleta() << "\n"
-                << "Local de Entrega: " << this -> getLocal_entrega() << "\n"
-                << "Peso da Carga: " << this -> getPeso_carga() << "kg\n"
-                << "Volume da Carga: " << this -> getVolume_carga() << "cm³\n";
-}
 int Pedido::setCliente(Cliente cliente)
 {
     this -> cliente = cliente;
@@ -82,7 +76,16 @@ int Pedido::setVolume_carga(float volume_carga)
     this -> volume_carga = volume_carga;
     return 1;
 }
-
+int Pedido::setLatitude(double latitude)
+{
+    this -> latitude = latitude;
+    return 1;
+}
+int Pedido::setLongitude(double longitude)
+{
+    this -> longitude = longitude;
+    return 1;
+}
 
 Cliente Pedido::getCliente()
 {
@@ -112,6 +115,14 @@ float Pedido::getVolume_carga()
 {
     return this -> volume_carga;
 }
+double Pedido::getLatitude()
+{
+    return this -> latitude;
+}
+double Pedido::getLongitude()
+{
+    return this -> longitude;
+}
 
 std::ostream& operator<<(std::ostream& os, Pedido& pedido)
 {
@@ -121,7 +132,9 @@ std::ostream& operator<<(std::ostream& os, Pedido& pedido)
                 << "Local de Coleta: " << pedido.getLocal_coleta() << "\n"
                 << "Local de Entrega: " << pedido.getLocal_entrega() << "\n"
                 << "Peso da Carga: " << pedido.getPeso_carga() << "kg\n"
-                << "Volume da Carga: " << pedido.getVolume_carga() << "cm³\n";
+                << "Volume da Carga: " << pedido.getVolume_carga() << "cm³\n"
+                << "Latitude: " << pedido.getLatitude() <<"\n"
+                << "Longitude: " << pedido.getLongitude() << "\n";
     return os;
 }
 

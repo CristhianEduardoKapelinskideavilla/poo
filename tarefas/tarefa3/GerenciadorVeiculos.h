@@ -17,6 +17,7 @@ class GerenciadorVeiculos
         Veiculo *buscarId(int id);
         Veiculo *buscaPlaca(std::string placa);
         Veiculo *buscarLocalizacao(std::string localizacao);
+        Veiculo *buscarCapacidade(float capacidade);
         std::list<Veiculo> *getVeiculosDisponiveis();
         friend std::ostream& operator<<(std::ostream& os, GerenciadorVeiculos gerenciador);
 };

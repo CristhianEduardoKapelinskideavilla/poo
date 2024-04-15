@@ -1,5 +1,6 @@
 #ifndef VEICULO_H
 #define VEICULO_H
+
 #include <iostream>
 
 class Veiculo
@@ -7,7 +8,7 @@ class Veiculo
 protected:
     static int id;
     int id_veiculo;
-    std::string capacidade_carga;
+    float capacidade_carga;
     std::string ano_fabricacao;
     std::string chassi;
     std::string modelo;
@@ -25,8 +26,8 @@ protected:
 
 public:
     Veiculo();
-    Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std:: string placa, float largura, float altura, float comprimento, float peso, double latitude, double longitude);
-    int setCapacidade_carga(std::string capacidade_carga);
+    Veiculo(float capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std:: string placa, float largura, float altura, float comprimento, float peso, double latitude, double longitude);
+    int setCapacidade_carga(float capacidade_carga);
     int setAno_fabricacao(std::string ano_fabricacao);
     int setChassi(std::string chassi);
     int setModelo(std::string modelo);
@@ -43,7 +44,7 @@ public:
     int setLongitude(double longitude);
     
     int getId();
-    std::string getCapacidade_carga();
+    float getCapacidade_carga();
     std::string getAno_fabricacao();
     std::string getChassi();
     std::string getModelo();

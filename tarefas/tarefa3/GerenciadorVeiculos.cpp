@@ -2,17 +2,17 @@
 
 GerenciadorVeiculos::GerenciadorVeiculos()
 {
-    veiculos = new std::list<Veiculo>();
+   this -> veiculos = new std::list<Veiculo>();
 }
 
 GerenciadorVeiculos::~GerenciadorVeiculos()
 {
-    delete(veiculos);
+    delete(this -> veiculos);
 }
 
 void GerenciadorVeiculos::adicionarVeiculo(Veiculo veiculo)
 {
-    veiculos -> push_back(veiculo);
+    this -> veiculos -> push_back(veiculo);
 }
 
 std::ostream& operator<<(std::ostream& os, GerenciadorVeiculos *gerenciador)
@@ -27,12 +27,12 @@ std::ostream& operator<<(std::ostream& os, GerenciadorVeiculos *gerenciador)
 
 void GerenciadorVeiculos::removerVeiculo(Veiculo veiculo)
 {
-    veiculos -> remove(veiculo);
+    this -> veiculos -> remove(veiculo);
 }
 
 Veiculo *GerenciadorVeiculos::buscarId(int id)
 {
-    for(std::list<Veiculo>::iterator i = veiculos -> begin(); i != veiculos -> end(); i++)
+    for(std::list<Veiculo>::iterator i = this -> veiculos -> begin(); i != this -> veiculos -> end(); i++)
     {
         if(i -> getId() == id)
             return &(*i);
@@ -42,7 +42,7 @@ Veiculo *GerenciadorVeiculos::buscarId(int id)
 
 Veiculo *GerenciadorVeiculos::buscaPlaca(std::string placa)
 {
-    for(std::list<Veiculo>::iterator i = veiculos -> begin(); i != veiculos -> end(); i++)
+    for(std::list<Veiculo>::iterator i = this -> veiculos -> begin(); i != this -> veiculos -> end(); i++)
     {
         if(i -> getPlaca() == placa)
         {
@@ -52,9 +52,20 @@ Veiculo *GerenciadorVeiculos::buscaPlaca(std::string placa)
     return NULL;
 }
 
+Veiculo *GerenciadorVeiculos::buscarCapacidade(float capacidade)
+{
+    for(std::list<Veiculo>::iterator i = this -> veiculos -> begin(); i != this -> veiculos -> end(); i++)
+    {
+        if(i -> getCapacidade_carga() >= capacidade)
+        {
+            return &(*i);
+        }
+    }
+    return NULL;
+}
 Veiculo *GerenciadorVeiculos::buscarLocalizacao(std::string localizacao)
 {
-    for(std::list<Veiculo>::iterator i = veiculos -> begin();i != veiculos -> end(); i++)
+    for(std::list<Veiculo>::iterator i = this -> veiculos -> begin();i != this -> veiculos -> end(); i++)
     {
         if(i -> getLocalizacao() == localizacao)
         {
@@ -66,5 +77,5 @@ Veiculo *GerenciadorVeiculos::buscarLocalizacao(std::string localizacao)
 
 std::list<Veiculo> *GerenciadorVeiculos::getVeiculosDisponiveis()
 {
-    return veiculos;
+    return this -> veiculos;
 }

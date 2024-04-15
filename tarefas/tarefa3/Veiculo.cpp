@@ -4,7 +4,7 @@
 Veiculo::Veiculo()
 {
     this -> id_veiculo = ++Veiculo::id;
-    this -> capacidade_carga = "";
+    this -> capacidade_carga = 0;
     this -> ano_fabricacao = "";
     this -> chassi = "";
     this -> modelo = "";
@@ -21,7 +21,7 @@ Veiculo::Veiculo()
     this -> latitude = 0;
 }
 
-Veiculo::Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std::string placa, float largura, float altura, float comprimento, float peso, double latitude, double longitude)
+Veiculo::Veiculo(float capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std::string placa, float largura, float altura, float comprimento, float peso, double latitude, double longitude)
 {
     this -> id_veiculo = Veiculo::id;
     this -> capacidade_carga = capacidade_carga;
@@ -43,7 +43,7 @@ Veiculo::Veiculo(std::string capacidade_carga, std::string ano_fabricacao, std::
 
 int Veiculo::id = 0;
 
-int Veiculo::setCapacidade_carga(std::string capacidade_carga)
+int Veiculo::setCapacidade_carga(float capacidade_carga)
 {
     this -> capacidade_carga = capacidade_carga;
     return 1;
@@ -145,7 +145,7 @@ int Veiculo::getId()
 {
     return this -> id_veiculo;
 }
-std::string Veiculo::getCapacidade_carga()
+float Veiculo::getCapacidade_carga()
 {
     return this -> capacidade_carga;
 }
