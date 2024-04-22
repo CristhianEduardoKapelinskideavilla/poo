@@ -5,18 +5,20 @@
 
 Pedido::Pedido()
 {
-    this -> cliente = Cliente();
-    this -> veiculo = Veiculo();
+    this -> cliente = new Cliente();
+    this -> veiculo = new Veiculo();
     this -> tipo_transporte = "";
     this -> local_coleta = "";
     this -> local_entrega = "";
     this -> peso_carga = 0.0;
     this -> volume_carga = 0.0;
-    this -> longitude = 0;
-    this -> latitude = 0;
+    this -> longitudeOrigem = 0;
+    this -> latitudeOrigem = 0;
+    this -> longitudeDestino = 0;
+    this -> latitudeDestino = 0;
 }
 
-Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga, double latitude, double longitude)
+Pedido::Pedido(Cliente *cliente, Veiculo *veiculo, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, float peso_carga, float volume_carga, double latitudeOrigem, double longitudeOrigem, double latitudeDestino, double longitudeDestino)
 {
     this -> cliente = cliente;
     this -> veiculo = veiculo;
@@ -25,16 +27,23 @@ Pedido::Pedido(Cliente cliente, Veiculo veiculo, std::string tipo_transporte, st
     this -> local_entrega = local_entrega;
     this -> peso_carga = peso_carga;
     this -> volume_carga = volume_carga;
-    this -> longitude = longitude;
-    this -> latitude = latitude;
+    this -> longitudeOrigem = longitudeOrigem;
+    this -> latitudeOrigem = latitudeOrigem;
+    this -> longitudeDestino = longitudeDestino;
+    this -> latitudeDestino = latitudeDestino;
 }
 
-int Pedido::setCliente(Cliente cliente)
+Pedido::~Pedido()
+{
+    delete this -> cliente;
+    delete this -> veiculo;
+}
+int Pedido::setCliente(Cliente *cliente)
 {
     this -> cliente = cliente;
     return 1;
 }
-int Pedido::setVeiculo(Veiculo veiculo)
+int Pedido::setVeiculo(Veiculo *veiculo)
 {
     this ->  veiculo = veiculo;
     return 1;
@@ -76,22 +85,33 @@ int Pedido::setVolume_carga(float volume_carga)
     this -> volume_carga = volume_carga;
     return 1;
 }
-int Pedido::setLatitude(double latitude)
+int Pedido::setLatitudeOrigem(double latitudeOrigem)
 {
-    this -> latitude = latitude;
+    this -> latitudeOrigem = latitudeOrigem;
     return 1;
 }
-int Pedido::setLongitude(double longitude)
+int Pedido::setLongitudeOrigem(double longitudeOrigem)
 {
-    this -> longitude = longitude;
+    this -> longitudeOrigem = longitudeOrigem;
+    return 1;
+}
+int Pedido::setLatitudeDestino(double latitudeDestino)
+{
+    this -> latitudeDestino = latitudeDestino;
+    return 1;
+}
+int Pedido::setLongitudeDestino(double longitudeDestino)
+{
+    this -> longitudeDestino = longitudeDestino;
     return 1;
 }
 
-Cliente Pedido::getCliente()
+
+Cliente *Pedido::getCliente()
 {
     return this -> cliente;
 }
-Veiculo Pedido::getVeiculo()
+Veiculo *Pedido::getVeiculo()
 {
     return this -> veiculo;
 }
@@ -115,26 +135,36 @@ float Pedido::getVolume_carga()
 {
     return this -> volume_carga;
 }
-double Pedido::getLatitude()
+double Pedido::getLatitudeOrigem()
 {
-    return this -> latitude;
+    return this -> latitudeOrigem;
 }
-double Pedido::getLongitude()
+double Pedido::getLongitudeOrigem()
 {
-    return this -> longitude;
+    return this -> longitudeOrigem;
+}
+double Pedido::getLatitudeDestino()
+{
+    return this -> latitudeDestino;
+}
+double Pedido::getLongitudeDestino()
+{
+    return this -> longitudeDestino;
 }
 
 std::ostream& operator<<(std::ostream& os, Pedido& pedido)
 {
-    os << "\nCliente: " << pedido.getCliente().getNome() << "\n"
-                << "Veiculo: " << pedido.getVeiculo().getId() << "\n"
+    os << "\nCliente: " << (pedido.getCliente() != nullptr ? pedido.getCliente() -> getNome() : "N/A") << "\n"
+        << "Veiculo: " << (pedido.getVeiculo() != nullptr ? std::to_string(pedido.getVeiculo()->getId()) : "N/A") << "\n"
                 << "Tipo de Transporte: " << pedido.getTipo_transporte() << "\n"
                 << "Local de Coleta: " << pedido.getLocal_coleta() << "\n"
                 << "Local de Entrega: " << pedido.getLocal_entrega() << "\n"
                 << "Peso da Carga: " << pedido.getPeso_carga() << "kg\n"
                 << "Volume da Carga: " << pedido.getVolume_carga() << "cm³\n"
-                << "Latitude: " << pedido.getLatitude() <<"\n"
-                << "Longitude: " << pedido.getLongitude() << "\n";
+                << "Latitude de Origem: " << pedido.getLatitudeOrigem() << "\n"
+                << "Longitude de Origem: " << pedido.getLongitudeOrigem() << "\n"
+                << "Latitude de Destino: " << pedido.getLatitudeDestino() << "\n"
+                << "Longitude de Destino: " << pedido.getLongitudeDestino() << "\n";
     return os;
 }
 

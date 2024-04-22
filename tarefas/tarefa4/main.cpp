@@ -1,63 +1,63 @@
-#include "Veiculo.cpp"
-#include "Cliente.cpp"
+#include <iostream>
 #include "Pedido.cpp"
-#include "onibus.cpp"
+#include "Cliente.cpp"
+#include "Veiculo.cpp"
 #include "GerenciadorVeiculos.cpp"
 #include "Roterizacao.cpp"
-#include <iostream>
-#include <list>
 
-int main(void)
+int main()
 {
-    Veiculo carro = Veiculo(500, "1991", "123456789", "Fusca", "Хатанга, RU", "4x4", "Carro", "Passeio", "ABC123", 185, 220, 445, 1500, 71.95683503660769, 102.32859790085502);
-    // if(carro == carro)
-    //     std::cout << carro << std::endl;
+    Cliente *cliente1 = new Cliente("João", "123456789-00", "Lima, Peru", "123456789", "000000000", 20);
+    //std::cout << cliente1 << std::endl;
 
-    Cliente cliente1 = Cliente("Дми́трий", "dmitri2913219@gmail.com", "Коротчаево, RU", "00 00000000", "123456789", 19);
-    // if(cliente1 == cliente1)
-    //     std::cout << cliente1 << std::endl;
-                
-    Pedido pedido1 = Pedido(cliente1, carro, "Carro", "Alegrete, RS", cliente1.getEndereco(), 1000.0, 300.0, -19.84578804521026, -43.9946677273016);
-    // if(pedido1 == pedido1)
-    //     std::cout << pedido1 << std::endl;
-    
-    Veiculo motocicleta = Veiculo();
-    Pedido pedido2 = Pedido(cliente1, motocicleta, "carro", "Тикси, RU", cliente1.getEndereco(), 300, 100, 71.63916451382197, 128.85308458153048);
+    Veiculo veiculo1 = Veiculo(1000, "2021", "123456789", "Carro", "Rio de Janeiro, Brasil", "4x4", "Trabalho", 
+    "Trabalho", "ABC-1234", 450, 350, 2000, 1000, -22.9068467, -43.1728965);
+    //std::cout << veiculo1 << std::endl;
 
-    Onibus onibus1 = Onibus(41, 5500, "1991", "123456789", "onibus", "Alegrete, RS", "8x4", "onibus", "trabalho","ABC321", 300, 400, 530, 4000, -29.789200620677825, -55.76846768255048);
-    onibus1.setAltura(500);
-    // if (onibus1 == onibus1)
-    //     std::cout << onibus1 << std::endl;
-   
-    Onibus onibus2 = Onibus();
+    Pedido *pedido1 = new Pedido(cliente1, nullptr, "Carro", "Buenos Aires, Argentina", "Lima, Peru", 1000, 100, -34.603722, -58.381592, -12.0463731, -77.042754);
+    //std::cout << *pedido1 << std::endl;
 
 
+    Veiculo veiculo2 = Veiculo(1000, "2021", "123456789", "Carro", "Santiago, Chile", "4x4", "Trabalho", 
+    "Trabaho", "ABC-1234", 450, 350, 2000, 1000, -33.4488915, -70.6692655);
+    //std::cout << veiculo2 << std::endl;
+
+    Veiculo veiculo3 = Veiculo(1000, "2021", "123456789", "Carrao", "Bogotá, Colômbia", "4x4", "Trabalho", 
+    "Trabalho", "ABC-1234", 450, 350, 2000, 1000, 4.7109886, -74.072092);
+    //std::cout << veiculo3 << std::endl;
+
+    Veiculo veiculo4 = Veiculo(1000, "2021", "123456789", "Carro", "Montevideo, Uruguai", "4x4", "Trabalho", 
+    "Trabalho", "ABC-1234", 450, 350, 2000, 1000, -34.9011127, -56.1645314);
+    //std::cout << veiculo4 << std::endl;
+
+    Pedido *pedido2 = new Pedido(cliente1, nullptr, "Carro", "Bogotá, Colômbia", "Montevideo, Uruguai", 1000, 100, 4.64342084221073, -74.1971426695125, -34.9011127, -56.1645314);
     GerenciadorVeiculos *gerenciador = new GerenciadorVeiculos();
-    gerenciador -> adicionarVeiculo(carro);
-    gerenciador -> adicionarVeiculo(onibus1);
-    gerenciador -> adicionarVeiculo(onibus2);
-    gerenciador -> adicionarVeiculo(motocicleta);
-    gerenciador -> removerVeiculo(onibus2);
-    
-    Veiculo *search = gerenciador -> buscarId(12);
-    // if(search)
-    //     std::cout << *search << std::endl;
-    // search = gerenciador -> buscaPlaca("ABC321");
-    // if(search)
-    //     std::cout << *search << std::endl;
+    gerenciador -> adicionarVeiculo(&veiculo1);
+    gerenciador -> adicionarVeiculo(&veiculo2);
+    gerenciador -> adicionarVeiculo(&veiculo3);
+    gerenciador -> adicionarVeiculo(&veiculo4);
+    std::cout << gerenciador << std::endl;
+    Roterizacao *roterizacao1 = new Roterizacao();
+    roterizacao1 -> setPedido(pedido1);
+    roterizacao1 -> setVeiculosDisponiveis(gerenciador);
+    roterizacao1 -> acharVeiculo();
+    roterizacao1 -> calcularDistancia();
+    roterizacao1 -> calcularTempoEntrega(100);
 
-    std::list<Veiculo> *veiculos = gerenciador -> getVeiculosDisponiveis();
-    //std::cout << gerenciador << std::endl;
-
+    //std::cout << *roterizacao1 << std::endl;
+    Roterizacao *roterizacao2 = new Roterizacao();
+    roterizacao2 -> setPedido(pedido2);
+    roterizacao2 -> acharVeiculo();
+    roterizacao2 -> calcularDistancia();
+    roterizacao2 -> calcularTempoEntrega(100);
     
-    Roterizacao *roterizador = new Roterizacao();
-    //if(roterizador == roterizador)
-    roterizador -> setPedido(&pedido2);
-    roterizador -> setVeiculosDisponiveis(gerenciador);
-    roterizador -> acharVeiculo();
-    roterizador -> calcularDistancia();
-    roterizador -> calcularTempoEntrega(80);
-    std::cout << *roterizador;
-    delete(gerenciador);
+    roterizacao1 -> finalizarEntrega();
+    roterizacao2 -> finalizarEntrega();
+    std::cout << gerenciador << std::endl;
+
+    std::list<Roterizacao*> *roterizacoes = new std::list<Roterizacao*>();
+    roterizacoes -> push_back(roterizacao1);
+    roterizacoes -> push_back(roterizacao2);
+    // std::cout << roterizacoes << std::endl;
     return 0;
 }

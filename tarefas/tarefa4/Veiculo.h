@@ -6,6 +6,7 @@
 class Veiculo
 {
 protected:
+    //id é um atributo estático que será incrementado a cada novo veículo criado, ele é o mesmo para todos os Veiculos, por isso é estático, e é inicializado com 0, não é usavel pelo usuario, é apenas para controle interno, o id_veiculo que é utilizavel pelo usuario.
     static int id;
     int id_veiculo;
     float capacidade_carga;
@@ -59,6 +60,7 @@ public:
     float getPeso();
     double getLatitude();
     double getLongitude();
+
     bool operator==(const Veiculo& other) const;
     friend std::ostream& operator<<(std::ostream& os, Veiculo& veiculo);
 };

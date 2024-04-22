@@ -1,28 +1,4 @@
-# Programação Orientada a Objetos 2024
-`cristhianavila.aluno@unipampa.edu.br` 
-`2310100609`
-
-## Tarefa 1
-1) Implementadas as classes:
-    - Veiculo
-    - Cliente
-    - Pedido
-2) Implementados `get`e `set` para todas as variaveis das classes
-
-## Tarefa 2
-
-1) Implementada a classe `onibus` com `herança`.
-2) Implementada a classe `gerenciadorVeiculos`, que contem métodos para gerenciar todos os Veiculos da empresa com uma `lista`, contendo métodos para buscar Veiculos e gerenciar a lista.
-3) Adicionada à classe Veiculo um `static int id` que é unico para cada Veiculo e usado para gerenciar os Veiculos.
-
-## Tarefa 3
-
-1) Implementada a sobrecarga dos operadores `==` e `<<` em todas as classes.
-2) Implementada a sobrecarga de metodos utilizando `polimorfismo`.
-3) Iniciada a implementacão da classe `Roterização`, responsavel por gerenciar as rotas dos pedidos.
-    - Feita uma função que calcula a distancia em quilometros entre duas coordenadas na superficie da terra utilizando a Formula de Haversine <img src="tarefas/tarefa3/haversine.png" width="500">
-
-## Tarefa 4
+# Tarefa 4
 
 1) Criados `READMEs` para cada semana, e um para todo o projeto que reune os de cada semana em apenas um.
 2) Inseridos `comentarios` no código para facilitar o entendimento.

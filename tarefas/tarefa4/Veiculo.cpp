@@ -3,7 +3,7 @@
 
 Veiculo::Veiculo()
 {
-    this -> id_veiculo = ++Veiculo::id;
+    this -> id_veiculo = Veiculo::id;
     this -> capacidade_carga = 0;
     this -> ano_fabricacao = "";
     this -> chassi = "";
@@ -23,7 +23,7 @@ Veiculo::Veiculo()
 
 Veiculo::Veiculo(float capacidade_carga, std::string ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao, std::string tracao, std::string especie, std::string categoria, std::string placa, float largura, float altura, float comprimento, float peso, double latitude, double longitude)
 {
-    this -> id_veiculo = Veiculo::id;
+    this -> id_veiculo = ++Veiculo::id;
     this -> capacidade_carga = capacidade_carga;
     this -> ano_fabricacao = ano_fabricacao;
     this -> chassi = chassi;
