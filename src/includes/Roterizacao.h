@@ -54,6 +54,6 @@ public:
     */
     int finalizarEntrega();
     bool operator==(const Roterizacao& outro) const; 
-    friend std::ostream& operator<<(std::ostream& os, const Roterizacao& roterizacao);
+    friend std::ostream& operator<<(std::ostream& os, Roterizacao& roterizacao);
 };
 #endif

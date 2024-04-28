@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Pedido.cpp"
-#include "Cliente.cpp"
-#include "Veiculo.cpp"
-#include "GerenciadorVeiculos.cpp"
-#include "Roterizacao.cpp"
+#include "./includes/Pedido.h"
+#include "./includes/Cliente.h"
+#include "./includes/Veiculo.h"
+#include "./includes/GerenciadorVeiculos.h"
+#include "./includes/Roterizacao.h"
 
 int main()
 {
