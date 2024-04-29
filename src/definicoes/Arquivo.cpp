@@ -26,16 +26,32 @@ vector<string> *Arquivo::split(string fileName, char delimitador) {
 }
 
 map<string, vector<string>*> *Arquivo::read_csv(string fileName, char delimitador) {
-        vector<map<string, string>*> *map_csv = new vector<string, vector<string>*>();
+        vector<map<string, string>*> *vector_csv = new vector<map<string, string>*>();
+        map<string, string> *linha_csv = new map<string, string>();
         vector<string> *conteudo_csv = this->split(fileName, ';');
         vector<string> *cabecalhos = new vector<string>();
-        int indice = 0;
-        for(string dado : *conteudo_csv) {
-            if(indice == 0) {
-                // logica de insercao
-            }
-        }
+        int indice = -1, coluna = 0;
         
-        if(dado[dado.length()-1] == '\n')
-            dado = dado.replace(dado.end()-1, dado.end(), "");
+        for(string dado : *conteudo_csv) {
+            if(dado[dado.length()-1] == '\n' || (cabecalhos->size() != 0 && cabecalhos->size()+1 == coluna+1))
+                ++indice; 
+                
+            if(dado[dado.length()-1] == '\n')
+                dado = dado.replace(dado.end()-1, dado.end(), "");
+            
+            if(cabecalhos->size() != 0 && cabecalhos->size()+1 == coluna+1) {
+                vector_csv->push_back(linha_csv);
+                coluna = 0;
+                continue;
+            }
+
+            if(indice == -1) {
+                cabecalhos->push_back(dado);
+                continue;     
+            }
+
+            string nome_coluna = cabecalhos->at(coluna);
+            linha_csv->insert(pair<string, string>(nome_coluna, dado));
+            ++coluna;
+        }
 }
