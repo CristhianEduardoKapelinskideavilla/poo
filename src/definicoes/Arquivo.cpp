@@ -24,10 +24,11 @@ vector<string> *Arquivo::split(string fileName, char delimitador) {
 
     return dados;
 }
+
 /**
  * le o conteudo do csv em forma de array, verifica cada coluna de uma linha, e retorna um vetor contendo um map onde cada indice corresponde a um cabeçalho.
 */
-map<string, vector<string>*> *Arquivo::read_csv(string fileName, char delimitador) {
+vector<map<string, string>*> *Arquivo::read_csv(string fileName, char delimitador) {
         vector<map<string, string>*> *vector_csv = new vector<map<string, string>*>();
         map<string, string> *linha_csv = new map<string, string>();
         vector<string> *conteudo_csv = this->split(fileName, ';');
@@ -48,6 +49,7 @@ map<string, vector<string>*> *Arquivo::read_csv(string fileName, char delimitado
             }
 
             if(indice == -1) {
+                // TODO: verificar epaços
                 cabecalhos->push_back(dado);
                 continue;     
             }
@@ -56,4 +58,5 @@ map<string, vector<string>*> *Arquivo::read_csv(string fileName, char delimitado
             linha_csv->insert(pair<string, string>(nome_coluna, dado));
             ++coluna;
         }
+        return vector_csv;
 }

@@ -10,7 +10,7 @@ class Arquivo
 private:
     string default_path = "../assets";
 public:
-    map<string, vector<string>*> *read_csv(string fileName, char delimitador);
+    vector<map<string, string>*> *read_csv(string fileName, char delimitador);
     vector<string> *split(string fileName, char delimitador);
 
 };
