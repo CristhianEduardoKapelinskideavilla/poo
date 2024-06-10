@@ -49,7 +49,6 @@ vector<map<string, string>*> *Arquivo::read_csv(string fileName, char delimitado
             }
 
             if(indice == -1) {
-                // TODO: verificar epaços
                 cabecalhos->push_back(dado);
                 continue;     
             }
