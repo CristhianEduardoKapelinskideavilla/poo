@@ -1,6 +1,6 @@
-#include "Pedido.h"
-#include "Cliente.h"
-#include "Veiculo.h"
+#include "../includes/Pedido.h"
+#include "../includes/Cliente.h"
+#include "../includes/Veiculo.h"
 #include <iostream>
 
 Pedido::Pedido()
