@@ -51,8 +51,8 @@ class Pedido:
         self.prioridade = prioridade
 
     def __str__(self):
-        return f'Cliente: {self.cliente}\nTipo de transporte: {self.tipo_transporte}\nEndereço de coleta: {self.endereco_coleta}\nEndereço de entrega: {self.endereco_entrega}\nPeso: {self.peso}\nVolume: {self.volume}\nPrioridade: {self.prioridade}'
+        return f'Cliente: {self.cliente}\nEndereço de coleta: {self.endereco_coleta}\nEndereço de entrega: {self.endereco_entrega}\nPeso: {self.peso}\nVolume: {self.volume}\nPrioridade: {self.prioridade}'
     
     def __eq__(self, other):
-        return self.cliente == other.cliente and self.tipo_transporte == other.tipo_transporte and self.endereco_coleta == other.endereco_coleta and self.endereco_entrega == other.endereco_entrega and self.peso == other.peso and self.volume == other.volume and self.prioridade == other.prioridade
+        return self.cliente == other.cliente and self.endereco_coleta == other.endereco_coleta and self.endereco_entrega == other.endereco_entrega and self.peso == other.peso and self.volume == other.volume and self.prioridade == other.prioridade
 
