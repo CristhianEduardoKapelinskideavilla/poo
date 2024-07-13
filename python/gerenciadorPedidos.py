@@ -34,11 +34,14 @@ class GerenciadorPedidos:
 
     def realizarEntrega(self):
         for pedido in self.pedidos:
-            print(pedido)
-            if(pedido.get_veiculo() != None):
+            if((pedido.get_veiculo()) != None):
                 pedido.get_veiculo().set_disponivel(True)
                 pedido.set_veiculo(None)
                 self.pedidos.remove(pedido)
-                print("Entrega realizada com sucesso")
                 continue
 
+    def __str__(self):
+        pedidos = ''
+        for pedido in self.pedidos:
+            pedidos += str(pedido)
+        return pedidos

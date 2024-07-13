@@ -1,5 +1,3 @@
-import pytest
-
 from gerenciadorVeiculos import GerenciadorVeiculos
 from veiculo import Veiculo
 

@@ -1,5 +1,3 @@
-import pytest
-
 from pedido import Pedido
 from cliente import Cliente
 from veiculo import Veiculo

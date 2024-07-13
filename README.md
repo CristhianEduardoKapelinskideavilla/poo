@@ -1,33 +1,106 @@
-# Programação Orientada a Objetos 2024
-`cristhianavila.aluno@unipampa.edu.br` 
-`2310100609`
+# Gerenciamento de Entregas
 
-## Tarefa 1
-1) Implementadas as classes:
-    - Veiculo
-    - Cliente
-    - Pedido
-2) Implementados `get`e `set` para todas as variaveis das classes
+Este projeto tem como objetivo criar um sistema de gerenciamento de entregas, incluindo a gestão de clientes, pedidos e veículos. Ele é capaz de ler dados de um arquivo CSV, realizar geocodificação de endereços e alocar veículos para os pedidos baseados no peso e volume.
 
-## Tarefa 2
+## Estrutura do Projeto
 
-1) Implementada a classe `onibus` com `herança`.
-2) Implementada a classe `gerenciadorVeiculos`, que contem métodos para gerenciar todos os Veiculos da empresa com uma `lista`, contendo métodos para buscar Veiculos e gerenciar a lista.
-3) Adicionada à classe Veiculo um `static int id` que é unico para cada Veiculo e usado para gerenciar os Veiculos.
+### Classes Principais
 
-## Tarefa 3
+- **Cliente**: Representa um cliente com atributos como nome, CPF, endereço, telefone e email.
+- **Pedido**: Representa um pedido com atributos como cliente, veículo, endereço de coleta, endereço de entrega, peso, volume e prioridade.
+- **Veiculo**: Representa um veículo com atributos como endereço de coleta, endereço de entrega, peso, volume e disponibilidade.
+- **GerenciadorVeiculos**: Gerencia a adição, remoção e busca de veículos.
+- **GerenciadorPedidos**: Gerencia a adição, remoção e definição de veículos para os pedidos, além de realizar entregas.
 
-1) Implementada a sobrecarga dos operadores `==` e `<<` em todas as classes.
-2) Implementada a sobrecarga de metodos utilizando `polimorfismo`.
-3) Iniciada a implementacão da classe `Roterização`, responsavel por gerenciar as rotas dos pedidos.
-    - Feita uma função que calcula a distancia em quilometros entre duas coordenadas na superficie da terra utilizando a Formula de Haversine <img src="tarefas/tarefa3/haversine.png" width="500">
+### Funcionalidades
 
-## Tarefa 4
+- **Leitura de CSV**: Lê dados de um arquivo CSV (`dados_entregas.csv`) e cria objetos Pedido.
+- **Geocodificação**: Converte endereços em coordenadas de latitude e longitude usando a biblioteca `geopy`.
+- **Gerenciamento de Veículos e Pedidos**: Adiciona, remove e busca veículos, além de associar veículos a pedidos e realizar entregas.
 
-1) Criados `READMEs` para cada semana, e um para todo o projeto que reune os de cada semana em apenas um.
-2) Inseridos `comentarios` no código para facilitar o entendimento.
-3) Modificada a classe `Pedido`, substituidas as variaveis `latitude` e `longitude` por `latitudeOrigem`, `longitudeOrigem`, `latitudeDestino` e `longitudeDestino`. Além das variaveis cliente e veiculo da classe terem mudado de variaveis estaticas para ponteiros.
-4) Modificado o parametro da classe Roterizacao, de `calcular a distancia entre pontos`, agora ela usa as novas variaveis do pedido para calcular a distancia entre o veiculo e o local de coleta, e entre o local de coleta e local de entrega, além da distancia total.
-5) Criada um parametro na classe `GerenciadorVeiculos` para buscar os veiculos mais proximos à um certo ponto, e que tenha uma capacidade de carga maior ou igual ao necesario.
-6) Modificado o parametro `acharVeiculo` da classe Roterizacao, agora o mesmo acha o veiculo mais proximo a regiao de coleta e com a capacidade de carga necessaria, além de remover o veiculo da lista de veiculos disponiveis.
-7) Criado o parametro `finalizarEntrega`, que adiciona o veiculo novamente à lista de veiculos disponiveis e que troca a localizacao do veiculo para a localizacão de entrega.
+## Estrutura de Arquivos
+
+- **cliente.py**: Contém a classe Cliente.
+- **pedido.py**: Contém a classe Pedido.
+- **veiculo.py**: Contém a classe Veiculo.
+- **gerenciadorVeiculos.py**: Contém a classe GerenciadorVeiculos.
+- **gerenciadorPedidos.py**: Contém a classe GerenciadorPedidos.
+- **csv_handler.py**: Contém funções para leitura do CSV e geocodificação.
+- **test_cliente.py**: Contém testes para a classe Cliente.
+- **test_gerenciadorPedidos.py**: Contém testes para a classe GerenciadorPedidos.
+- **test_gerenciadorVeiculos.py**: Contém testes para a classe GerenciadorVeiculos.
+- **test_veiculo.py**: Contém testes para a classe Veiculo.
+- **requiriments.txt**: Lista de dependências do projeto.
+
+## Instalação
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/CristhianEduardoKapelinskideavilla/poo.git
+    cd poo/python
+    ```
+
+2. Crie um ambiente virtual e ative-o:
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # No Windows use `venv\Scripts\activate`
+    ```
+
+3. Instale as dependências:
+
+    ```bash
+    pip install -r requiriments.txt
+    ```
+
+## Uso
+
+1. Para ler os dados de entregas a partir do CSV:
+
+    ```python
+    from csv_handler import read_csv
+
+    pedidos = read_csv()
+    ```
+
+2. Para converter um endereço em coordenadas de latitude e longitude:
+
+    ```python
+    from csv_handler import string_to_latlong
+
+    coordenadas = string_to_latlong("Av Tiaraju, 97546-550 Alegrete / RS")
+    ```
+
+3. Para gerenciar veículos e pedidos:
+
+    ```python
+    from gerenciadorVeiculos import GerenciadorVeiculos
+    from gerenciadorPedidos import GerenciadorPedidos
+    from csv_handler import string_to_latlong
+    from veiculo import Veiculo
+    from pedido import Pedido
+    from cliente import Cliente
+
+    gerenciadorVeiculos = GerenciadorVeiculos()
+    gerenciadorPedidos = GerenciadorPedidos()
+
+    veiculo = Veiculo('Rua A', 'Rua B', 30, 40)
+    gerenciadorVeiculos.adicionarVeiculo(veiculo)
+
+    cliente = Cliente('João', '123.456.789-00', 'Rua A', '1234-5678', 'asdsa@gmail.com')
+    pedido = Pedido(cliente, None, string_to_latlong('Av Tiaraju, 97546-550 Alegrete / RS'), string_to_latlong('Palácio do Congresso Nacional, 70160-900 Brasília / DF'), 10, 20, 1)
+
+    gerenciadorPedidos.adicionarPedido(pedido)
+    gerenciadorPedidos.set_gerenciadorVeiculos(gerenciadorVeiculos)
+
+    gerenciadorPedidos.definirVeiculos()
+    gerenciadorPedidos.realizarEntrega()
+    ```
+
+## Testes
+
+Para executar os testes, use o comando:
+
+```bash
+pytest

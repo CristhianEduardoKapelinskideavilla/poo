@@ -1,5 +1,3 @@
-import pytest
-
 from veiculo import Veiculo
 
 def test_veiculo():
